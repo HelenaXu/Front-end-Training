@@ -1,0 +1,11 @@
+.Triangle{
+    width: 0px;
+    height: 0px;
+    /* background-color: brown; */
+    /* border-top: 100px solid greenyellow; */
+    border-left: 100px solid transparent;
+    border-bottom: 100px solid tomato;
+    border-right: 100px solid transparent;
+    animation-delay: 2s;
+    animation-iteration-count: infinite;
+}

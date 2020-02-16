@@ -1,0 +1,62 @@
+<html>
+<head>
+        <title>HTML FORM</title>
+        <link rel="stylesheet" href="Assignment2-Form.css">
+</head>
+<body >
+    <h1>Register</h1>
+    <form action="#" method="post">
+        <ul class="flex-outer">
+           
+            <li class="firstName">
+                <label for="inputFname">First Name:</label>
+                <input class="item1" id="inputFname" type="text" /> 
+            </li>
+            <li class="lastName">
+                <label for="inputLname">Last Name:</label>
+                <input class="item" id="inputLname" type="text" />
+            </li>
+        
+            <li class="university">
+                <label>University:</label> 
+                <select class="item" >
+                    <option value="The University of Texas at Austin">The University of Texas at Austin</option>
+                    <option value="The University of Texas at San Antonio">The University of Texas at San Antonio</option>
+                    <option value="The University of Texas at Dallas">The University of Texas at Dallas</option>
+                    <option value="The University of Texas at Huston">The University of Texas at Huston</option>
+                </select>
+            </li>
+    
+            <li class="studentId">
+                <label for="stid">Student ID:</label> 
+                <input class="item" id="stid" type="number" placeholder="Number Only">
+            </li>
+
+            <li class="birthDate">
+                <label>Birth Date:</label>
+                <input class="item" type="date">
+            </li>
+
+            <li class="gender">
+                <label>Gender:</label> 
+                    <span>Male</span> <input class="item" type="checkbox"> <span>Femal</span> <input type="checkbox">     
+                <!-- <ul class="flex-inner">
+
+                    </ul> -->
+                    
+            </li>
+
+            <li class="pass">
+                <label for="psw">Password :</label> 
+                <input class="item" id="psw" type="password" /> 
+            </li>
+    
+            <li>
+                <button type="submit" class="button 1">Submit</button>
+                <button type="submit" class="button 2">Reset</button>
+                
+            </li>
+        </ul>
+    </form>
+</body>
+</html>

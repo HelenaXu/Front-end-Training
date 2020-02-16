@@ -1,0 +1,96 @@
+.nav>h1{
+	background-color: #000;
+	font-size: 1.2em;
+	color: #fff;
+	text-align: center;
+	padding-top: 1em;
+	padding-bottom: 1em;
+}
+.navbar {
+    display: flex;
+    flex-direction: row;
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+    
+}
+.navbar li {
+	margin-left: 20px;
+	margin-right: 20px;
+	padding: 25px 10px;
+
+}
+/* 为什么是head.nav */
+header.nav {
+    position: sticky;
+    top: 0;
+}
+/* .nav-right  为什么把li 加class 命名为nav-right 不可以 */
+.navbar li:last-child { 
+        margin-left: auto;
+        margin-right: 20px;
+}
+
+/* start grid */
+.one {
+    grid-area: a1;
+}
+.two {
+    grid-area: a2;
+}
+.three {
+    grid-area: a3;
+}
+.four {
+    grid-area: a4;
+}
+.five {
+    grid-area: a5;
+}
+.six {
+    grid-area: a6;
+}
+.seven {
+    grid-area: a7;
+}
+* {box-sizing: border-box;}
+.container {
+    /* width: 100%; */
+    border: 2px solid  #fff4e6;
+    border-radius: 10px;
+    background-color: #fff4e6;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-auto-rows: minmax(100px, auto);
+    grid-gap: 10px;
+    grid-template-areas: 
+      "a1 a1 a1 a1 a1 a1 a1 a1 a2 a2 a2 a2"
+      "a1 a1 a1 a1 a1 a1 a1 a1 a2 a2 a2 a2"
+      "a1 a1 a1 a1 a1 a1 a1 a1 a2 a2 a2 a2"
+      "a1 a1 a1 a1 a1 a1 a1 a1 a2 a2 a2 a2"
+      "a3 a3 a3 a3 a4 a4 a4 a4 a2 a2 a2 a2"
+      "a3 a3 a3 a3 a4 a4 a4 a4 a2 a2 a2 a2"
+      "a3 a3 a3 a3 a4 a4 a4 a4 a5 a5 a5 a5"
+      "a3 a3 a3 a3 a4 a4 a4 a4 a5 a5 a5 a5"
+      "a3 a3 a3 a3 a4 a4 a4 a4 a5 a5 a5 a5"
+      "a3 a3 a3 a3 a4 a4 a4 a4 a5 a5 a5 a5"
+      "a6 a6 a6 a6 a4 a4 a4 a4 a5 a5 a5 a5"
+      "a6 a6 a6 a6 a7 a7 a7 a7 a7 a7 a7 a7"
+      "a6 a6 a6 a6 a7 a7 a7 a7 a7 a7 a7 a7"
+      "a6 a6 a6 a6 a7 a7 a7 a7 a7 a7 a7 a7"
+}
+
+.container > div {
+    font-size: 20px;
+    border: 2px solid #4d94ff;
+    border-radius: 5px;
+    background-color:rgb(0, 132, 255);
+    padding: 1em;
+    color: greenyellow;
+    margin: 5px;
+}
+
+
+
+
+
