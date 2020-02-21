@@ -1,7 +1,7 @@
 ### 1. What is HTTP?
 
 - HTTP stands for Hypertext Transfer Protocol. 
-- It is a set of rules for transferring of data on WWW (World Wide Web).
+- It is a set of rules for transferring of data between severs, CPs, browsers on WWW (World Wide Web).
 
 ### 2. What are the basic Features of HTTP?
 
@@ -9,7 +9,7 @@ The basic features of HTTP are as follows:
 
 - HTTP is a request and response protocol.
 - HTTP is a media independent protocol.
-- HTTP is a stateless protocol.
+- HTTP is a stateless but session protocol.  no session information is retained by the receiver. ( each of the request over the protocol is unique, no request is conneted to another request. in another way,  http has no memory for previous request, to fix it use session. sotre in cookies about the preserve se
 
 ### 3. What are request methods in HTTP?
 
@@ -116,7 +116,7 @@ The major benefits of HTTPS certificate are:
 
 ### *11. What is cURL in HTTP?*
 
-cURL is command line tool. It is available on all major operating systems.
+cURL is command line tool. command line tool for transfer data or making variouse of types of request. It is available on all major operating systems.
 
 ### 12. What is [REST](https://sofish.github.io/restcookbook/)?
 

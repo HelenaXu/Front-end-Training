@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Students Roll Operations</title>
+	<style>
+		input[type='submit'], button, [aria-label]{
+			cursor: pointer;
+		}
+		#spoiler{
+			display: none;
+		} 
+        b{
+            font-size: 20px;
+            color: brown;
+        }
+        .fixed-container{
+            left: 0;
+	        position: fixed;
+	        bottom: 0;
+	        width: 100%;
+	        
+        }
+        
+	</style>
+</head>
+<body>
+
+
+
+<h1> Students List of Javascript Class</h1>
+
+<div id="spoiler" role="aria-hidden">
+	<form action="javascript:void(0);" method="POST" id="saveEdit">
+		<input type="text" id="edit-name">
+		<input type="submit" value="Edit" /> <a onclick="CloseInput()" aria-label="Close">&#10006;</a>
+	</form>
+</div>
+
+<p id="counter"></p>
+
+<table>
+    <br />
+    
+    <tr>
+        <th>Name</th>
+        <th colspan="2">Operations</th>
+	</tr>
+		<tbody id="students">
+		</tbody>
+</table>
+
+
+<div class="fixed-container">
+    <form action="javascript:void(0);" method="POST" onsubmit="app.Search()"> 
+        <input type="text" id="search-name" placeholder="Search by Name">
+        <input type="submit" value="Search">
+    </form>
+    <form action="javascript:void(0);" method="POST" onsubmit="app.Add()"> 
+        <input type="text" id="add-name" placeholder="Enroll a new Student">
+        <input type="submit" value="Add">
+    </form>
+</div>
+
+<script>
+
+    // app function
+var app = new function() {
+
+	this.el = document.getElementById('students');
+
+	this.students = ['Alia Lai', 'Hong', 'Han', 'Dante', 'Emma'];
+
+	this.Count = function(data) {
+		let el   = document.getElementById('counter');
+		let name = 'student';
+
+		if (data) {
+			if (data > 1) {
+				name = 'students';
+			}
+			el.innerHTML = "Currently " + '<b>' + data +'</b>' + ' ' + name + " enrolled";
+		} else {
+			el.innerHTML = "Currently No " + name + " enrolled";
+		}
+    };
+    
+	// fetch the default students array and insert into HTML table
+	this.FetchAll = function() {
+		let data = ''; // 一定要加， 否则与后面concat 出现 undefined
+
+		if (this.students.length > 0) {
+			for (let i = 0; i < this.students.length; i++) {
+				data += '<tr>';
+				data += '<td>' + this.students[i] + '</td>';
+				data += '<td><button onclick="app.Edit(' + i + ')">Edit</button></td>';
+				data += '<td><button onclick="app.Delete(' + i + ')">Delete</button></td>';
+				data += '</tr>';
+			}
+		}
+        // why we need to count here ????
+		this.Count(this.students.length);
+		return this.el.innerHTML = data;
+	};
+
+    // add function
+	this.Add = function () {
+		let el = document.getElementById('add-name');
+		// Get the value
+		let name = el.value;
+
+		if (name) {
+			// Add the new value
+			this.students.push(name.trim());
+			// Reset input value
+			el.name = '';
+			// Dislay the new list
+			this.FetchAll();
+		}
+	};
+
+	this.Edit = function (item) {
+        let el = document.getElementById('edit-name');
+    
+		// Display value in the field
+		el.value = this.students[item];
+		// Display fields
+		document.getElementById('spoiler').style.display = 'block';
+		self = this;
+
+		document.getElementById('saveEdit').onsubmit = function() {
+			// Get value
+			var name = el.value;
+
+			if (name) {
+				// replace value
+				self.students.splice(item, 1, name.trim());
+				// Display the new list
+				self.FetchAll();
+				// Hide fields
+				CloseInput();
+			}
+		}
+	};
+	// delete function
+	this.Delete = function (item) {
+		// Delete the current row
+		this.students.splice(item, 1);
+		// Display the new list
+		this.FetchAll();
+	};
+	
+	// search function
+    this.Search = function(){
+        let el = document.getElementById('search-name');
+        // Get the value
+        // let keyWords = el.value;
+        // if(!keyWords){         // 没有输入查询内容 （ 手动写的查询功能 ）
+        //     return this.students;
+        // }
+        // let arr = [];
+        // for(let i = 0; i < this.students.length; i++){
+        //     let index =  this.students[i].indexOf(keyWords);
+        //     if(index > -1){
+        //         arr.push(this.students[i]);
+        //     }
+        // }
+        // this.students = arr;
+        // this.FetchAll();
+
+        
+		// Get the value and transfer to clean format
+		let keyWords = el.value.toLowerCase().trim();
+
+		if (keyWords) {
+            for(let i = 0; i < this.students.length; i++){
+                // let index =  this.students[i].indexOf(keyWords);
+                // if(index === -1){
+                //     this.students.splice(i, 1);
+				// }
+				
+				// if this name includes the keywords, keep it, otherwise delete it
+                if(!this.students[i].toLowerCase().includes(keyWords)){
+                    this.students.splice(i, 1);
+				}
+       		}
+
+        this.FetchAll();
+		}
+
+	};
+	
+}
+
+app.FetchAll();
+
+function CloseInput() {
+	document.getElementById('spoiler').style.display = 'none';
+}
+</script>
+</body>
+</html>
