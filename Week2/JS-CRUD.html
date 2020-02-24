@@ -71,21 +71,34 @@ var app = new function() {
 
 	this.students = ['Alia Lai', 'Hong', 'Han', 'Dante', 'Emma'];
 
-	this.Count = function(data) {
+	this.Count = function(data, isFilter) {
 		let el   = document.getElementById('counter');
 		let name = 'student';
-
-		if (data) {
-			if (data > 1) {
-				name = 'students';
+		if(!isFilter){
+			if (data) {
+				if (data > 1) {
+					name = 'students';
+				}
+				el.innerHTML = "Currently " + '<b>' + data +'</b>' + ' ' + name + " enrolled";
+			} else {
+				el.innerHTML = "Currently No " + name + " enrolled";
 			}
-			el.innerHTML = "Currently " + '<b>' + data +'</b>' + ' ' + name + " enrolled";
-		} else {
-			el.innerHTML = "Currently No " + name + " enrolled";
+		}else{
+			if (data) {
+				if (data > 1) {
+					name = 'students';
+				}
+				el.innerHTML = "After Filter " + '<b>' + data +'</b>' + ' ' + name + " left";
+			} else {
+				el.innerHTML = "After Filter No " + name + " left";
+			}
 		}
+			
     };
     
 	// fetch the default students array and insert into HTML table
+	
+
 	this.FetchAll = function() {
 		let data = ''; // 一定要加， 否则与后面concat 出现 undefined
 
@@ -99,7 +112,7 @@ var app = new function() {
 			}
 		}
         // why we need to count here ????
-		this.Count(this.students.length);
+		this.Count(this.students.length, false);
 		return this.el.innerHTML = data;
 	};
 
@@ -153,40 +166,53 @@ var app = new function() {
 	// search function
     this.Search = function(){
         let el = document.getElementById('search-name');
-        // Get the value
-        // let keyWords = el.value;
-        // if(!keyWords){         // 没有输入查询内容 （ 手动写的查询功能 ）
-        //     return this.students;
-        // }
-        // let arr = [];
-        // for(let i = 0; i < this.students.length; i++){
-        //     let index =  this.students[i].indexOf(keyWords);
-        //     if(index > -1){
-        //         arr.push(this.students[i]);
-        //     }
-        // }
-        // this.students = arr;
-        // this.FetchAll();
+		let keyWords = el.value.toLowerCase().trim();
+		let arr = [];
+        if(keyWords){         
+            for(let i = 0; i < this.students.length; i++){
+				let index =  this.students[i].toLowerCase().indexOf(keyWords);
+				if(index > -1){
+					arr.push(this.students[i]);
+				}
+        	}
+        }
+        
+        
+        let data = ''; // 一定要加， 否则与后面concat 出现 undefined
+
+		if (arr.length > 0) {
+			for (let i = 0; i < arr.length; i++) {
+				data += '<tr>';
+				data += '<td>' + arr[i] + '</td>';
+				data += '<td><button onclick="app.Edit(' + i + ')">Edit</button></td>';
+				data += '<td><button onclick="app.Delete(' + i + ')">Delete</button></td>';
+				data += '</tr>';
+			}
+		}
+        // why we need to count here ????
+		this.Count(arr.length, true);
+		return this.el.innerHTML = data;
+        
 
         
-		// Get the value and transfer to clean format
-		let keyWords = el.value.toLowerCase().trim();
+		// // Get the value and transfer to clean format
+		// let keyWords = el.value.toLowerCase().trim();
 
-		if (keyWords) {
-            for(let i = 0; i < this.students.length; i++){
-                // let index =  this.students[i].indexOf(keyWords);
-                // if(index === -1){
-                //     this.students.splice(i, 1);
-				// }
+		// if (keyWords) {
+        //     for(let i = 0; i < this.students.length; i++){
+        //         // let index =  this.students[i].indexOf(keyWords);
+        //         // if(index === -1){
+        //         //     this.students.splice(i, 1);
+		// 		// }
 				
-				// if this name includes the keywords, keep it, otherwise delete it
-                if(!this.students[i].toLowerCase().includes(keyWords)){
-                    this.students.splice(i, 1);
-				}
-       		}
+		// 		// if this name includes the keywords, keep it, otherwise delete it
+        //         if(!this.students[i].toLowerCase().includes(keyWords)){
+        //             this.students.splice(i, 1);
+		// 		}
+       	// 	}
 
-        this.FetchAll();
-		}
+        // this.FetchAll();
+		
 
 	};
 	

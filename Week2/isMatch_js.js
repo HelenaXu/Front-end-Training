@@ -5,23 +5,33 @@
 // ` Finish the rest of part within the giving Function "isMatch". `
 
 function isMatch(_keyword, _string) {
-	var keySplit = _keyword.split(" "),
-		[_first, _mid, _last] = keySplit,
-		rst;
+	function isMatch(_kw, _str){
+        let swds = _kw.split(" ");
+        
+        if(swds.length != 3){
+           return false;
+        }
 
-	switch (_mid) {
-		case "+":
-			_string.includes(_first) && _string.includes(_last) ? rst = 1 : rst = 0;
-			break;
-		case "-":
-			_string.includes(_first) || _string.includes(_last) ? rst = 0 : rst = 1;
-			break;
-		default:
-			break;
-	}
-	return rst;
+        let [_first, _second, _third] = swds;
+        let res;
+        switch(_second){
+          case "+":
+            _str.indexOf(_first) > 0 && _str.indexOf(_third) > 0 ? res = 1 : res = 0;
+          break;
+          
+          case "-":
+            _str.indexOf(_first) > 0 || _str.indexOf(_third) > 0 ? res = 0 : res = 1;
+          break;
+          
+          default:
+            break;
+          
+        }
+            return res;
+        
+        
+      }
 }
-
 
 
 var keyword_1 = "cat + dog";
@@ -44,7 +54,7 @@ var string_6  = "my cat loves my dog";
 
 
 isMatch(keyword_1, string_1) //? 1
-isMatch(keyword_2, string_2) //? 0 
+isMatch(keyword_2, string_2) //? 0
 isMatch(keyword_3, string_3) //? 0
 isMatch(keyword_4, string_4) //? 0
 isMatch(keyword_5, string_5) //? 0
