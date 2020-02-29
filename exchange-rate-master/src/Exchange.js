@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 
+
+
 export default class Exchange extends Component {
-  state = {
+  constructor state = {
     amount1: 1,
     amount2: 0,
     c1: "USD",
