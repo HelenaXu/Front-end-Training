@@ -256,7 +256,7 @@ footer>h1 {
 	padding: 30px;
 }
 
-.wrapper>div>figure {
+.hide {
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -272,6 +272,7 @@ footer>h1 {
 	width: 50%;
 	margin: 15px;
 	object-fit: cover;
+
 }
 
 .wrapper>div>figure figcaption {

@@ -2,7 +2,7 @@
 ### Guide: 
 > 1. Answer as much as what you know. Straight to the point. Don't rambling.
 > 2. NO internet search, notes, cheatsheet. Be honest. The mark is not your goal.
-> 3. Submit answer sheet to the Slack-trainning-channel with file name "quiz_final_<your name>" Good Luck.
+> 3. Submit answer sheet to the Slack-trainning-channel with file name "quiz_final_\<your name\>" Good Luck.
 
 ---
 ### Basic Questions
@@ -24,20 +24,28 @@
 
 	use Accessible Rich Internet Applications which has a batch of special attributes. These attributes makes application more accessible to people with disabilities.
 
-1. What CSS architecture strategy will you implement while create a React Components?
+1. What CSS architecture strategy will you implement while create a React Components? (NOT CORRECT)
 
-	1)Insert separate CSS ducument with each component.
+	1)Insert separate CSS ducument with each component.  
 	2)insert JS
 
 
-1. What are the coding standard of HTML5 and CSS3 that you should follow?
+1. What are the coding standard of HTML5 and CSS3 that you should follow? (correct but not critical enough)
 
-	1) using indent to format
-	2) using comment to split logic block
-	3) always add DOCTYPE at first
-	4) close HTML tags
-	5) use lower case for attributes
+	For HTML
+	1) using indent to format  
+	2) using comment to split logic block  
+	3) always add DOCTYPE at first  
+	4) close HTML tags  
+	5) use lower case for attributes  
 	6) space less between attributes and expressions
+	
+	for CSS
+	7) put spaces after ":", before "{" in property declarations.
+	8) Use hex color codes #000 unless using rgba();
+	9) Do not indent blocks.
+	10）Always follow a rule with one line of whitespace.
+	11）Quote url() and @import() contents.
 
 
 1. How do you compose your CSS architecture in a component-based project.
@@ -53,30 +61,35 @@
 
 	regular functions and arrow function are all callable. the difference is regular function has a function structure, we can use it create a new object by new() while arrow function not.
 
-1. What is the major advantage of Using React.js as the front-end view layer?
+1. What is the major advantage of Using React.js as the front-end view layer? (reusable is also an important advantage needs to be mentioned)
 
 	The major React as the front-end view is it faster rendering when it refers to a rich reaction application.
-	React increase the speed of updates by using virtual DOM tree. becasue of all the isolated component, react does not have to upload all web page. it only render the changed part. 
+	React increase the speed of updates by using virtual DOM tree. becasue of all the isolated component, react does not have to upload all web page. it only render the changed part. And also, component in React is reusable, it could help to structure the project and improve the reusability. 
 
 
-1. Explain the difference between context and scope in JavaScript Mechanism.
+1. Explain the difference between context and scope in JavaScript Mechanism. (Good!)
 
 	context is related to object. It is a context a function run. It always bind with "this". When a function call in global environment, "this" refers to window. when a function runs by a object or binding with a obj, "this" refers to this object.
 	scope refers to the visibility of its variables and expressions when a function run. 
 
-1. What are the ways to abort Javascript execution?
+1. What are the ways to abort Javascript execution? (there are two more. Figure them out)
 
-	clearInterval() stop a timer;
-	generally try-catch could stop by a fake error.
+	1) clearInterval() stop a timer;
+	2) generally try-catch could stop by a fake error.
+//	3) theWorker.terminate()  (verify, object.ternimnate())
+	4) use return | break
 
 1. What is the difference between the stateful and stateless component?
 
 	stateful component has state, which can keep tracking the data changing. It always occurs in class component.
 	stateless component does not care the state or data changes, aim to make components as simple as possible. it is in functional component. 
 
-1. Write down all the design pattern you know and their scenes to be used。
+1. Write down all the design pattern you know and their scenes to be used. (Only ONE? Is that all you know?)
 
-	singleton: when we only need one instance singleton is useful.
+	1) Singleton: when we only need one instance singleton is useful. Eg. login pop up window;
+	2) Factory: when When a class doesn't know what sub-classes will be required to create, and wants its sub-classes specify the objects to be created. 
+	3) Strategy Pattern: when some of the functions or classes only differ by their behaviors, we could avoid variaty of conditional statement by strategy design.
+
 
 
 1. How can we use a lifecycle method in React.js? (Give a code sample)
@@ -95,7 +108,7 @@
 
 1. Can you explain what problem does Redux solved as single-source of truth?
 
-	It is easy to retrieve information in constant time and maintain a clean structure for the state in redux. In original flux, we have several stores holding several piece of data. Sometime one store has to wait another store update, and we also have to write more code to maintain the structure. One store solve this question. It makes data serialization and make problems easy to track.
+	It is easy to retrieve information in constant time and maintain a clean structure for the state in redux. In original flux, we have several stores holding several piece of data. Sometime one store has to wait another store update, and we also have to write more code to maintain the structure. One store solve this problem. It makes data serialization and make problems easy to track.
 
 ---
 ### Coding Questions
@@ -137,7 +150,7 @@
 			}
 
 			function isPalindrome(str){
-				return str.split("").reverse().join("") == str;
+				return str.split("").reverse().join("");
 			}
 
 		};

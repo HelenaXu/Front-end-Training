@@ -26,7 +26,7 @@ header.nav {
     top: 0;
 }
 /* .nav-right  为什么把li 加class 命名为nav-right 不可以 */
-.navbar li:last-child { 
+.nav-right{ 
         margin-left: auto;
         margin-right: 20px;
 }

@@ -1,9 +1,10 @@
-// this is the
+// this is the initial state
 const initialState = {
   myLists:[],
   recommendation:[]
 }
 
+// reducer accept three actions with pre state, generate a new state.
 const reducer = (state = initialState, action={}) => {
 switch (action.type) {
   // fetch data at first render
